@@ -66,7 +66,7 @@
             
             /* 全身絵ビューアー */
             #viewer {
-                position: absolute;
+                position: fixed;
                 display: none;
                 width: 100%;
                 height: 100%;
@@ -92,16 +92,16 @@
             <table class="table">
                 % for card in cards:
                 <tr>
-                    <td class="col-icon"><a href="#" data-view-image="{{ card['image_url']['character'] }}"><img src="{{ card['image_url']['icon'] }}" alt="{{ card['name'] }}" class="card-icon"></a></td>
-                    <td class="col-name"><strong>[{{ card['rarity'] }}]{{ card['name'] }}</strong></td>
+                    <td class="col-icon"><img data-view-image="/images/character/{{ card.id }}" src="/images/icon/{{ card.id }}" alt="{{ card.name }}" class="card-icon"></td>
+                    <td class="col-name"><strong>[{{ card.rarity }}]{{ card.name }}</strong></td>
                     <td class="col-parameters">
                         <ul>
-                            <li>P: {{ card['parameters']['power'] }}</li>
-                            <li>G: {{ card['parameters']['guard'] }}</li>
-                            <li>S: {{ card['parameters']['speed'] }}</li>
+                            <li>P: {{ card.power }}</li>
+                            <li>G: {{ card.guard }}</li>
+                            <li>S: {{ card.speed }}</li>
                         </ul>
                     </td>
-                    <td class="col-profile">CV: {{ card['creator']['voice'] }}</td>
+                    <td class="col-profile">CV: {{ card.voice }}</td>
                 </tr>
                 % end
             </table>
@@ -109,7 +109,7 @@
         
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script>
-            $('.col-icon a').on('click', function() {
+            $('.col-icon img').on('click', function() {
                 var viewImageUrl = $(this).attr('data-view-image');
                 $('#viewer').css({
                     'background-image': 'url(' + viewImageUrl + ')',

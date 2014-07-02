@@ -1,0 +1,84 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta name="viewport" content="width=640, user-scalable=no,initial-scale=0.5,target-densitydpi=medium-dpi,maximum-scale=0.5,minimum-scale=0.5" />
+	<meta name="format-detection" content="email=no,telephone=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>ange</title>
+
+
+ 
+	<link href="http://image.ange-app.com/ange/css/_common/style.css?v=20140701012310" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" charset="utf-8" src="http://web.ange-app.com/ange/js/libs/jquery-2.0.3.min.js"></script>
+ 
+
+	<span id="resDir" style="display:none;">http://img.sega-net.com/ange/resource</span> <!-- xxxxManager.jsのローカルテストに必要 -->
+</head>
+<body class="ios">
+
+<!--ヘッダー-->
+
+
+
+<!--フッター-->
+
+
+
+
+<span id="not_support_error_link" style="visibility: hidden; display: none;">http://web.ange-app.com/ange/system/ExtendedNotSupportAccessErrorPage;jsessionid=8F69399832A85B3E60EB87FF3FD573EB.avmap21?cache=true</span>
+
+
+	<script type="text/javascript" src="http://web.ange-app.com/ange/js/_common/_common.js" charset="utf-8"></script>
+
+
+<div id="baseContainer">
+	
+
+<div id="ErrorPageBgArea"></div>
+<div id="ErrorPage">
+	<div id="pageTitleArea">
+		<p>ERROR</p>
+	</div>
+
+	<p class="ErrorText">
+		予期せぬエラーが発生しました。<br />
+		ご迷惑をおかけし、申し訳ございません。[500]<br /><br />
+		<a class="btnBlue s3 SARI" href="/ange/top/TopPage;jsessionid=8F69399832A85B3E60EB87FF3FD573EB.avmap21">タイトル画面へ</a>
+	</p>
+
+</div>
+<script type="text/javascript">
+/*<![CDATA[*/
+
+	window.onload = function(){
+		// ロード消去
+		gMediaPlayer.loadHide();
+	};
+
+/*]]>*/
+</script>
+
+
+
+	
+    
+</div>
+
+<script type="text/javascript" charset="utf-8">
+/*<![CDATA[*/
+
+//<![CDATA[
+(function(){gMediaPlayer.stopVOICE();g_body=document.getElementsByTagName("body")[0];var p=0;var o=0;var c=0;var i=0;document.addEventListener("touchstart",a,true);document.addEventListener("touchmove",f,true);document.addEventListener("touchend",d,true);function a(s){g_move_span=0;c=s.changedTouches[0].pageX;i=s.changedTouches[0].pageY}function f(s){p=c-s.changedTouches[0].pageX;o=i-s.changedTouches[0].pageY;p=(p<0)?-p:p;o=(o<0)?-o:o;g_move_span=(o-p>0)?o:p}function d(s){p=c-s.changedTouches[0].pageX;o=i-s.changedTouches[0].pageY;p=(p<0)?-p:p;o=(o<0)?-o:o;g_move_span=(o-p>0)?o:p}var r=document.getElementById("bannerAreaLinkStop");var n=function(w){w.preventDefault();if(g_move_span<g_move_span_limit){var x=w.currentTarget.getAttribute("data-id");var u=w.currentTarget.getAttribute("data-delay");var v=document.createEvent("HTMLEvents");v.initEvent(x,true,false);var s=this.dispatchEvent(v);if(u){var t=parseInt(u);setTimeout(function(){popupStart(x)},t)}else{popupStart(x)}}};$(document).on(commonGetTouchEventId(),".popupBtn",n);function g(){commonHeadFunc();commonFootFunc();var s=document.getElementById("commonMission");if(s){document.getElementById("missionClose").addEventListener(commonGetTouchEventId(),function(w){w.preventDefault();$(s).addClass("hide")});s.addEventListener("webkitAnimationEnd",function(){this.style.display="none"})}if(!ua.android){var v=document.getElementsByClassName("popupBtnCommonFoot");var t=v.length;for(var u=0;u<t;u++){if(document.getElementById("MyPage")){v[u].addEventListener("touchstart",n,true)}else{v[u].addEventListener("touchend",n,true)}}}}if(commonLocal){commonLocal.ajaxLoadComp(g)}else{g()}$(document).on("touchend",".se_decide",l);$(document).on("touchend",".se_select",b);$(document).on("touchend",".se_ng",h);$(document).on("touchend",".se_cancel",k);function l(s){if(g_move_span<g_move_span_limit&&this.className.indexOf("linkStop")==-1){gMediaPlayer.playSE("se_sys_kettei")}}function b(s){if(g_move_span<g_move_span_limit&&this.className.indexOf("linkStop")==-1){gMediaPlayer.playSE("se_sys_select")}}function k(s){if(g_move_span<g_move_span_limit&&this.className.indexOf("linkStop")==-1){gMediaPlayer.playSE("se_sys_cancel")}}function h(s){if(g_move_span<g_move_span_limit&&this.className.indexOf("linkStop")==-1){gMediaPlayer.playSE("se_sys_ng")}}if(ua.ios){$(document).on("touchstart",".btnBlue,.btnPink,.btnGreen",j);$(document).on("webkitAnimationEnd",".btnBlue,.btnPink,.btnGreen",q)}$(document).on("touchstart",".SARI",e);$(document).on("touchend",".SARI",m);function e(s){if(this.className.indexOf("linkStop")==-1){$(this).addClass("hover")}}function m(t){var s=this;$(s).removeClass("hover");if(s.tagName=="A"||s.tagName=="BUTTON"||s.tagName=="INPUT"){if(s.className.indexOf("linkStop")!=-1){t.preventDefault()}else{$(s).addClass("linkStop")}clearTimeout(s.timer);s.timer=setTimeout(function(u){$(s).removeClass("linkStop")},500)}}function j(s){if(this.className.indexOf("linkStop")==-1){$(this).addClass("anim")}}function q(s){$(this).removeClass("anim")}})();
+//]]>
+
+/*]]>*/
+</script>
+</body>
+
+
+</html>
