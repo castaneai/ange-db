@@ -81,7 +81,7 @@ def search(keyword=None):
     session = create_new_session()
     query = session.query(CardSchema)
     if keyword:
-        query.filter(sqlalchemy.or_(
+        query = query.filter(sqlalchemy.or_(
             CardSchema.name.like('%{0}%'.format(keyword)),
             CardSchema.voice.like('%{0}%'.format(keyword))
         ))
