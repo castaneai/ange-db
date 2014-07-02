@@ -2,6 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width" />
         <title>アンジュDB</title>
         <style>
             * {
@@ -84,8 +85,8 @@
 
         <div class="container">
 
-            <form class="search-form" action="/search" method="GET">
-                <input type="text" name="keyword" placeholder="キャラ名，声優名などで検索">
+            <form class="search-form" action="./" method="GET">
+                <input type="text" name="keyword" placeholder="キャラ名，声優名">
                 <button type="submit">検索検索ぅ</button>
             </form>
 

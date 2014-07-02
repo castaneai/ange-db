@@ -30,4 +30,4 @@ def icon(card_id):
             f.write(data)
     return static_file(cache_path, root='.')
 
-run(host='localhost', port=7777, debug=False)
+run(host='0.0.0.0', port=10800, debug=False)
