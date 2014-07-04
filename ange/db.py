@@ -83,7 +83,8 @@ def search(keyword=None):
     if keyword:
         query = query.filter(sqlalchemy.or_(
             CardSchema.name.like('%{0}%'.format(keyword)),
-            CardSchema.voice.like('%{0}%'.format(keyword))
+            CardSchema.voice.like('%{0}%'.format(keyword)),
+            CardSchema.illustrator.like('%{0}%'.format(keyword))
         ))
     return query.all()
 
