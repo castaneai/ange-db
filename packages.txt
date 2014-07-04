@@ -1,0 +1,6 @@
+SQLAlchemy==0.9.6
+bottle==0.12.7
+cssselect==0.9.1
+lxml==3.3.5
+pyquery==1.2.8
+requests==2.3.0
