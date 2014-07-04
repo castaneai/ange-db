@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width" />
-        <title>アンジュDB</title>
+        <title>アンジュ・ヴィエルジュ カードDB</title>
         <style>
             * {
                 margin: 0;
@@ -38,8 +38,13 @@
             }
             .search-form input,
             .search-form button {
+                -webkit-appearance: none;
+                border: 1px solid #bdc3c7;
+                border-radius: 4px;
+                padding: 0.2em;
                 font-size: larger;
                 max-width: 100%;
+                margin: 0.4em 0;
             }
             .table {
                 border-collapse: collapse;
@@ -64,6 +69,9 @@
                 text-align: center;
                 width: 64px;
             }
+            .col-icon img {
+                cursor: pointer;
+            }
             
             /* 全身絵ビューアー */
             #viewer {
@@ -71,6 +79,10 @@
                 display: none;
                 width: 100%;
                 height: 100%;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-color: rgba(0, 0, 0, 0.4);
             }
         </style>
     </head>
@@ -80,21 +92,21 @@
         </div>
 
         <header>
-            <h1>アンジュDB</h1>
+            <h1>アンジュ・ヴィエルジュ カードDB</h1>
         </header>
 
         <div class="container">
 
             <form class="search-form" action="./" method="GET">
-                <input type="text" name="keyword" placeholder="キャラ名，声優名">
+                <input type="text" name="keyword" placeholder="キャラ名，声優名など">
                 <button type="submit">検索検索ぅ</button>
             </form>
 
             <table class="table">
                 % for card in cards:
-                <tr>
-                    <td class="col-icon"><img data-view-image="/images/character/{{ card.id }}" src="/images/icon/{{ card.id }}" alt="{{ card.name }}" class="card-icon"></td>
-                    <td class="col-name"><strong>[{{ card.rarity }}]{{ card.name }}</strong></td>
+                <tr data-view-image="/images/character/{{ card.id }}.png">
+                    <td class="col-icon"><a href="javascript:void(0);"><img src="/images/icon/{{ card.id }}.png" alt="{{ card.name }}" class="card-icon"></a></td>
+                    <td class="col-name"><a href="javascript:void(0);"><strong>[{{ card.rarity }}]{{ card.name }}</strong></a></td>
                     <td class="col-parameters">
                         <ul>
                             <li>P: {{ card.power }}</li>
@@ -102,7 +114,12 @@
                             <li>S: {{ card.speed }}</li>
                         </ul>
                     </td>
-                    <td class="col-profile">CV: {{ card.voice }}</td>
+                    <td class="col-profile">
+                        <ul>
+                            <li>IL: {{ card.illustrator }}</li>
+                            <li>CV: {{ card.voice }}</li>
+                        </ul>
+                    </td>
                 </tr>
                 % end
             </table>
@@ -110,16 +127,11 @@
         
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script>
-            $('.col-icon img').on('click', function() {
-                var viewImageUrl = $(this).attr('data-view-image');
-                $('#viewer').css({
-                    'background-image': 'url(' + viewImageUrl + ')',
-                    'background-position': 'center center',
-                    'background-repeat': 'no-repeat',
-                    'background-attachment': 'fixed',
-                    'background-size': 'contain',
-                    'background-color': 'rgba(0, 0, 0, 0.4)'
-                }).fadeIn('fast');
+            $('.table tr a').on('click', function() {
+                var viewImageUrl = $(this).parents('tr').attr('data-view-image');
+                $('#viewer')
+                .fadeIn('fast')
+                .css('background-image', 'url(' + viewImageUrl + ')');
             });
             $('#viewer').on('click', function() {
                 $(this).fadeOut('fast');
